@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Mistakes Painters Make That Cost Them Money — PaintFlow</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1117;
+    --ink-muted: #5a5f72;
+    --surface: #ffffff;
+    --surface-2: #f5f4f0;
+    --border: rgba(15,17,23,0.1);
+    --accent: #1a4fd6;
+    --accent-light: #e8eeff;
+    --green: #1d7a4a;
+    --green-light: #e4f5ec;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --amber: #a06000;
+    --amber-light: #fff3d6;
+    --radius: 12px;
+    --radius-lg: 20px;
+    --max-w: 720px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface-2);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: var(--max-w); margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 2rem; }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .warning-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--red-light);
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  h1 em { font-style: normal; color: var(--accent); }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .form-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .form-card-sub {
+    font-size: 13px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 13px; font-weight: 500; color: var(--ink); }
+
+  input[type="text"], input[type="email"] {
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--ink);
+    background: white; outline: none;
+    transition: border-color 0.15s;
+  }
+
+  input:focus { border-color: var(--accent); }
+  input.error { border-color: #d63030; }
+
+  .btn {
+    width: 100%; background: var(--accent); color: white; border: none;
+    padding: 13px; border-radius: 10px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    transition: opacity 0.15s; margin-top: 0.5rem;
+  }
+
+  .btn:hover { opacity: 0.9; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .privacy-note { text-align: center; font-size: 12px; color: var(--ink-muted); margin-top: 10px; }
+
+  /* Results */
+  .results { display: none; }
+
+  .results-header {
+    background: var(--ink); color: white;
+    border-radius: var(--radius-lg); padding: 1.75rem 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .results-eyebrow {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+  }
+
+  .results-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.2;
+    color: white;
+  }
+
+  .results-sub {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    margin-top: 8px; font-weight: 300; line-height: 1.6;
+  }
+
+  .mistake-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 1.25rem; }
+
+  .mistake-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .mistake-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--red);
+    opacity: 0.2;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+    letter-spacing: -0.04em;
+  }
+
+  .mistake-content { flex: 1; }
+
+  .mistake-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .mistake-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .mistake-fix {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--green-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .fix-label {
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .pitch-card {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .pitch-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  .pitch-body {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pitch-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.15s;
+    margin-bottom: 1.25rem;
+  }
+
+  .pitch-cta:hover { opacity: 0.9; }
+
+  .pitch-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+  }
+
+  .pitch-feature {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .back-btn {
+    background: none; border: 1.5px solid var(--border); color: var(--ink-muted);
+    padding: 10px 20px; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; cursor: pointer; margin-bottom: 1rem; transition: border-color 0.15s;
+  }
+
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+    h1 { font-size: 1.5rem; }
+    .mistake-card { flex-direction: column; gap: 0.5rem; }
+    .mistake-number { font-size: 1.5rem; width: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <a href="https://paintflow-landing.vercel.app" class="logo">Paint<span>Flow</span></a>
+    <div class="warning-badge">⚠️ Free Guide for Painting Contractors</div>
+    <h1>5 Mistakes Painters Make That<br>Cost Them Money on <em>Every Job</em></h1>
+    <p class="subtitle">Most painting contractors are profitable on paper but bleeding money in ways they can't see. Here's exactly where it's going — and how to stop it.</p>
+  </div>
+
+  <!-- Email capture -->
+  <div id="capture-section">
+    <div class="form-card">
+      <div class="form-card-title">Get the free guide instantly</div>
+      <div class="form-card-sub">Enter your name and email to access all 5 mistakes — plus a fix for each one.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" placeholder="John" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="john@example.com" />
+        </div>
+      </div>
+      <button class="btn" id="submit-btn" onclick="submitForm()">Show Me the 5 Mistakes →</button>
+      <p class="privacy-note">No spam. Just helpful resources for painting contractors.</p>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results-section">
+    <button class="back-btn" onclick="goBack()">← Start Over</button>
+
+    <div class="results-header">
+      <div class="results-eyebrow">Free Guide — PaintFlow</div>
+      <div class="results-title">5 Mistakes Costing You Money on Every Job</div>
+      <div class="results-sub">These aren't rare mistakes — they happen on almost every job at almost every painting company. The ones who fix them are the ones who actually scale.</div>
+    </div>
+
+    <div class="mistake-list">
+
+      <div class="mistake-card">
+        <div class="mistake-number">1</div>
+        <div class="mistake-content">
+          <div class="mistake-title">Not tracking actual vs estimated hours</div>
+          <p class="mistake-body">You quote 20 hours, the job takes 26. You move on to the next job without knowing what happened. Six months later you wonder why the margins don't add up — it's because this is happening on every other job and you have no data to fix it. You can't manage what you don't measure.</p>
+          <div class="mistake-fix"><span class="fix-label">The fix:</span> Track clocked hours against quoted hours on every job. After 10 jobs you'll know exactly which job types, crew members, or estimators are consistently running over — and by how much.</div>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">2</div>
+        <div class="mistake-content">
+          <div class="mistake-title">Estimating materials by gut feel</div>
+          <p class="mistake-body">Most painters estimate paint by walking through a house and guessing. Sometimes you're right. Often you're not — and you're eating the difference. A 2,000 sq ft interior with 9-foot ceilings needs a specific amount of paint based on coverage rate and number of coats. Guessing means you're either over-buying or running short mid-job.</p>
+          <div class="mistake-fix"><span class="fix-label">The fix:</span> Use square footage and your paint's actual coverage rate to calculate gallons needed for every job. Build it into your estimating process so it's automatic, not an afterthought.</div>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">3</div>
+        <div class="mistake-content">
+          <div class="mistake-title">Scheduling jobs before collecting a deposit</div>
+          <p class="mistake-body">You close the job, add it to the calendar, order the materials, block your crew — and then the customer cancels or ghosts you. You've burned a week of scheduling capacity and real money on materials for a job that never happened. Deposits aren't just about cash flow — they're a commitment filter.</p>
+          <div class="mistake-fix"><span class="fix-label">The fix:</span> Make deposit collection a hard gate before any job gets scheduled. No deposit, no date on the calendar. Customers who won't pay a deposit won't value your time either.</div>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">4</div>
+        <div class="mistake-content">
+          <div class="mistake-title">Following up once and giving up</div>
+          <p class="mistake-body">You send an estimate, the customer goes quiet, you follow up once and never hear back. You write it off as a lost lead. But research consistently shows most sales happen on the 5th to 8th follow-up — and most contractors give up after one or two. You're losing jobs not because customers said no, but because you stopped showing up.</p>
+          <div class="mistake-fix"><span class="fix-label">The fix:</span> Build a follow-up sequence of at least 4–5 touchpoints over 2 weeks after every estimate. Text and email. Most of your "lost" leads just need a nudge.</div>
+        </div>
+      </div>
+
+      <div class="mistake-card">
+        <div class="mistake-number">5</div>
+        <div class="mistake-content">
+          <div class="mistake-title">Never doing a post-job analysis</div>
+          <p class="mistake-body">Job done, invoice sent, on to the next one. No review of what you estimated vs what actually happened. This means every mistake — labor overruns, material underestimates, scope creep — gets repeated indefinitely. The most profitable painting companies treat every finished job as data. The rest just hope next time goes better.</p>
+          <div class="mistake-fix"><span class="fix-label">The fix:</span> After every job, compare estimated vs actual hours, materials, and final margin. It takes 5 minutes and over time it's the single most powerful thing you can do to improve profitability.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pitch-card">
+      <div class="pitch-title">PaintFlow tracks all of this automatically.</div>
+      <p class="pitch-body">Every one of these mistakes is solved by having the right data in front of you. PaintFlow was built by a painting contractor specifically to track job costing, labor budgets, deposit status, and post-job profitability — so you always know where your money is going.</p>
+      <a class="pitch-cta" href="https://paintflow-landing.vercel.app" target="_blank">See How PaintFlow Works →</a>
+      <div class="pitch-features">
+        <span class="pitch-feature">Job costing</span>
+        <span class="pitch-feature">Live labor tracking</span>
+        <span class="pitch-feature">Deposit gates</span>
+        <span class="pitch-feature">Follow-up automations</span>
+        <span class="pitch-feature">Post-job analysis</span>
+        <span class="pitch-feature">$99/month</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+async function submitForm() {
+  const firstName = document.getElementById('first-name').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  let valid = true;
+  if (!firstName) { document.getElementById('first-name').classList.add('error'); valid = false; }
+  else document.getElementById('first-name').classList.remove('error');
+  if (!email || !email.includes('@')) { document.getElementById('email').classList.add('error'); valid = false; }
+  else document.getElementById('email').classList.remove('error');
+  if (!valid) return;
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Loading...';
+
+  try {
+    await fetch('https://formspree.io/f/xnjllrga', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ first_name: firstName, email: email })
+    });
+  } catch(e) {}
+
+  document.getElementById('capture-section').style.display = 'none';
+  document.getElementById('results-section').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  btn.disabled = false;
+  btn.textContent = 'Show Me the 5 Mistakes →';
+}
+
+function goBack() {
+  document.getElementById('results-section').style.display = 'none';
+  document.getElementById('capture-section').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
